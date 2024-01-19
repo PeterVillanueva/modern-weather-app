@@ -6,6 +6,26 @@ import {
 } from '@heroicons/react/outline';
 import background, { gradient } from './background';
 import { shuffle } from 'lodash';
+import styled, {keyframes} from "styled-components";
+
+const gradientAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
+const GradientBackground = styled.div`
+  background: ${({ gradient }) => gradient || 'none'};
+  background-size: 200% 200%;
+  animation: ${gradientAnimation} 5s ease infinite;
+`;
+
 
 export default function App() {
 	const [search, setSearch] = useState('');
@@ -50,7 +70,7 @@ export default function App() {
 	}, []);
 
 	return (
-		<div
+		<GradientBackground gradient={grad}
 			style={
 				info.condition?.toLowerCase() === 'clear'
 					? { backgroundImage: background.clear }
@@ -128,6 +148,6 @@ export default function App() {
 					</p>
 				</div>
 			</div>
-		</div>
+		</GradientBackground>
 	);
 }

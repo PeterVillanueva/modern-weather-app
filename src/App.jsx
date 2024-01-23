@@ -23,7 +23,7 @@ const gradientAnimation = keyframes`
 const GradientBackground = styled.div`
   background: ${({ gradient }) => gradient || 'none'};
   background-size: 200% 200%;
-  animation: ${gradientAnimation} 5s ease infinite;
+  animation: ${gradientAnimation} 10s ease infinite;
 `;
 
 
